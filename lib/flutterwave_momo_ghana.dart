@@ -1,7 +1,7 @@
 library flutterwave_momo_ghana;
 
 import 'package:flutter/material.dart';
-import 'package:flutterwave_momo_ghana/modules/request.dart';
+import 'package:flutterwave_momo_ghana/src/request.dart';
 import 'package:uuid/uuid.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 

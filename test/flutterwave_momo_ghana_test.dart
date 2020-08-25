@@ -1,7 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:flutterwave_momo_ghana/flutterwave_momo_ghana.dart';
-import 'package:flutterwave_momo_ghana/modules/request.dart';
+import 'package:flutterwave_momo_ghana/src/request.dart';
 
 void main() {
   Map<String, String> payload = {
@@ -13,8 +12,11 @@ void main() {
   "phone_number":"0547099292",
   "fullname":"John Madakin",
   };
-  test("Thhe request method should return either null or a url",
-      makeRequest(payload: null, headers: null, url: null),
+  Map<String,String> headers = {"Authorization": "Bearer FLWSECK_TEST-SANDBOXDEMOKEY-X"};
+  String url = "https://api.flutterwave.com/v3/charges?type=mobile_money_ghana";
+  
+  test("The request method should return either null or a url",
+      makeRequest(payload: payload, headers: headers, url: url),
   );
 
 }

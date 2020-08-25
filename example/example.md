@@ -1,19 +1,7 @@
-# flutterwave_momo_ghana
-
-## Getting started
-The package is a simple tool to process momo payments within your app, currently only supporting payment for Ghana alone.
-To use it, simply call its constructor with the data you wish to submit for the payment. It is widget with a body and few UI
-elements so treat like another in you app you are displaying. redirect the user to it once they have submitted the data to your form.
-The widget will handle every else until the payment is complete assuming correct parameters were passed to it.
-
-The transaction takes place in two steps first, the widget makes a call to the api backend and displays circular progress indicator
-If the details were valid the server will return url to finish the payment while simultaneously sending an OTP to the user to confirm.
-The widget will then redirect the user to a screen where they input the OTP code they received. If valid the transaction is complete and 
-your redirect url will recieve the transaction details. Note that after calling the constructor you must redirect the use to this widget
-so they can see the rest of the process.
-
+## How use this package
+The package is a simple tool to process momo payments within your app.
+To use it, simply call its constructor with the data you wish to submit for the payment.
 Below are the details you need to call it:
-
 ### amount - required
 The amount to charge *(required)* please modify you setting in flutterwave dashboard for who pays for the transaction fee. whatever is in you settings will be used
 
