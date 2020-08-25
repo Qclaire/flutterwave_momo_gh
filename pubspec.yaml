@@ -1,0 +1,22 @@
+name: flutterwave_momo_ghana
+description: A new package that implements Ghana Momo payments using the Rave FlutterWave Momo Ghana API. It requires your secret token from your flutterwave account and handles making requests to the api and redirecting to the follow up url.
+version: 1.0.0
+homepage: https://github.com/qclaire/flutterwave_momo_gh
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+  flutter: ">=1.17.0 <2.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  http: ^0.12.2
+  webview_flutter: ^0.3.22+1
+  uuid: ^2.2.0
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
