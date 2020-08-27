@@ -1,11 +1,11 @@
 name: flutterwave_momo_ghana
-description: Your users can pay you using MOMO in Ghana within your flutter app. It uses Flutterwave API.
-version: 1.0.1
+description: Users can pay you using MOMO in Ghana within your flutter app! No redirection to a browser!
+version: 1.0.3
 homepage: https://github.com/qclaire/flutterwave_momo_gh
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
-  flutter: ">=1.17.0 <2.0.0"
+  flutter: ">=1.20.0 <2.0.0"
 
 dependencies:
   flutter:
@@ -20,3 +20,18 @@ dev_dependencies:
     sdk: flutter
 
 flutter:
+  plugin:
+    platforms:
+      android:
+        package: com.flutterwavemomogh.package
+        pluginClass: FlutterwaveGhanaMOMO
+      ios:
+        pluginClass: FlutterwaveGhanaMOMO
+      web:
+        pluginClass: FlutterwaveGhanaMOMO
+      windows:
+        pluginClass: FlutterwaveGhanaMOMO
+      linux:
+        pluginClass: FlutterwaveGhanaMOMO
+      macos:
+        pluginClass: FlutterwaveGhanaMOMO

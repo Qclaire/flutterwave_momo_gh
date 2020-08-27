@@ -5,36 +5,33 @@ import 'package:flutterwave_momo_ghana/src/request.dart';
 import 'package:uuid/uuid.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
-
 class FlutterwaveGhanaMOMO extends StatefulWidget {
   final String amount;
-  final String secret_token;
-  String currency = "GHS";
-  String email = "someone@example.com";
-  String transaction_ref = Uuid().v4();
-  final String phone_number;
+  final String secretToken;
+  final String currency;
+  final String email;
+  final String transactionRef;
+  final String phoneNumber;
   final String network;
-  String redirect_url;
-  String full_name;
-  String momoURL = "https://api.flutterwave.com/v3/charges?type=mobile_money_ghana";
+  final String redirectUrl;
+  final String fullName;
+  final String sideNote;
 
   FlutterwaveGhanaMOMO({
     @required this.amount,
-    @required this.phone_number,
+    @required this.phoneNumber,
     @required this.network,
-    @required this.secret_token,
-    this.currency,
-    this.redirect_url,
-    this.email,
-    this.transaction_ref,
-    this.full_name,
+    @required this.secretToken,
+    this.currency = "GHS",
+    this.redirectUrl,
+    this.email = "someone@example.com",
+    this.transactionRef,
+    this.fullName,
+    this.sideNote,
   });
 
   @override
-  State<StatefulWidget> createState() {
-    // TODO: implement createState
-    throw UnimplementedError();
-  }
+  _FlutterwaveGhanaMOMOState createState() => _FlutterwaveGhanaMOMOState();
 
 }
 class _FlutterwaveGhanaMOMOState extends State<FlutterwaveGhanaMOMO> {
@@ -49,9 +46,12 @@ class _FlutterwaveGhanaMOMOState extends State<FlutterwaveGhanaMOMO> {
     request();
   }
   request()async{
-    Map<String, String> payload = {"amount":widget.amount, "currency":widget.currency, "email":widget.email, "tx_rf":widget.transaction_ref, "network":widget.network, "phone_number":widget.phone_number};
-    Map<String, String> hearders = {"Authorization": "Bearer ${widget.secret_token}"};
-    var status = await makeRequest(payload: payload, headers: hearders, url: widget.momoURL);
+    var ref = widget.transactionRef == null ? Uuid().v4() :widget.transactionRef;
+    Map<String, String> payload = {"amount":widget.amount, "currency":widget.currency, "email":widget.email, "tx_rf":ref, "network":widget.network, "phone_number":widget.phoneNumber, "redirect_url":widget.redirectUrl, "fullname":widget.fullName,"sideNote":widget.sideNote};
+    Map<String, String> headers = {"Authorization": "Bearer ${widget.secretToken}"};
+    String momoURL = "https://api.flutterwave.com/v3/charges?type=mobile_money_ghana";
+
+    var status = await makeRequest(payload: payload, headers: headers, url:momoURL);
     if(status !=  null){
       setState(() {
         isSuccess = true;
